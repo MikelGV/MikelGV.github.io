@@ -47,7 +47,7 @@ func Run(
 	srvr := NewServer()
 
 	httpServer := &http.Server{
-		Addr:    net.JoinHostPort("localhost:", "8080"),
+		Addr:    net.JoinHostPort("localhost", "8080"),
 		Handler: srvr,
 	}
 
