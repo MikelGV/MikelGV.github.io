@@ -1,0 +1,10 @@
+# Go
+tmp/
+
+# templ generated code
+*_templ.go
+
+# Tailwind generated CSS
+static/css/output.css
+
+AGENTS.md

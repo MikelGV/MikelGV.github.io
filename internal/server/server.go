@@ -15,6 +15,8 @@ import (
 func NewServer() http.Handler {
 	mux := http.NewServeMux()
 
+	mux.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+
 	var handler http.Handler = mux
 
 	return handler
@@ -47,7 +49,7 @@ func Run(
 	srvr := NewServer()
 
 	httpServer := &http.Server{
-		Addr:    net.JoinHostPort("localhost", "8080"),
+		Addr:    net.JoinHostPort("0.0.0.0", "8080"),
 		Handler: srvr,
 	}
 
