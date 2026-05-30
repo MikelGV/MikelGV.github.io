@@ -10,10 +10,16 @@ import (
 	"os/signal"
 	"sync"
 	"time"
+
+	"github.com/MikelGV/Personal-Website/internal/routes"
 )
 
 func NewServer() http.Handler {
 	mux := http.NewServeMux()
+
+	routes.AddRoutes(
+		mux,
+	)
 
 	mux.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
