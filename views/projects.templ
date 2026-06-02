@@ -1,5 +1,14 @@
-
 package views
 
+import "github.com/MikelGV/Personal-Website/internal/components/layout"
 
-func Projects() {}
+templ Projects() {
+	@layout.Base("Projects — MikelGV", "projects") {
+		<section class="space-y-6">
+			<h1 class="text-3xl font-bold tracking-tight">Projects</h1>
+			<p class="text-lg leading-relaxed text-stone-600">
+				A collection of things I've built.
+			</p>
+		</section>
+	}
+}
