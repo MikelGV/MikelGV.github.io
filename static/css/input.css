@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+@theme {
+    --color-pf-100: oklch(0.1522 0.0204 148.3);
+}
+
