@@ -11,14 +11,18 @@ import (
 	"sync"
 	"time"
 
+	"github.com/MikelGV/Personal-Website/internal/config"
 	"github.com/MikelGV/Personal-Website/internal/routes"
 )
 
-func NewServer() http.Handler {
+func NewServer(
+	cfg *config.Config,
+) http.Handler {
 	mux := http.NewServeMux()
 
 	routes.AddRoutes(
 		mux,
+		cfg,
 	)
 
 	mux.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
@@ -52,10 +56,12 @@ func Run(
 	ctx, cancel := signal.NotifyContext(ctx, os.Interrupt)
 	defer cancel()
 
-	srvr := NewServer()
+	srvr := NewServer(
+		&config.Config{},
+	)
 
 	httpServer := &http.Server{
-		Addr:    net.JoinHostPort("0.0.0.0", "8080"),
+		Addr:    net.JoinHostPort(config.ENV.Host, config.ENV.Port),
 		Handler: srvr,
 	}
 

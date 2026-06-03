@@ -3,11 +3,13 @@ package routes
 import (
 	"net/http"
 
+	"github.com/MikelGV/Personal-Website/internal/config"
 	"github.com/MikelGV/Personal-Website/internal/handlers"
 )
 
 func AddRoutes(
 	mux *http.ServeMux,
+	cfg *config.Config,
 ) {
 
 	mux.Handle("/", handlers.HomeHandler())
