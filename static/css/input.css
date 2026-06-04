@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-    --color-pf-100: oklch(0.1522 0.0204 148.3);
+    --color-pf-bg: #060E07;
+    --color-pf-text: #E1EFE3;
+    --color-pf-accent: #B8D6F8;
+    --font-family-sans: "Aldrich", sans-serif;
 }
 
