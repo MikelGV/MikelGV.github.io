@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+
+@theme {
+    --color-pf-bg: #060E07;
+    --color-pf-text: #E1EFE3;
+    --color-pf-accent: #B8D6F8;
+    --font-family-sans: "Aldrich", sans-serif;
+}
+

@@ -1,0 +1,14 @@
+package views
+
+import "github.com/MikelGV/Personal-Website/internal/components/layout"
+
+templ AboutMe() {
+	@layout.Base("About Me — MikelGV", "about") {
+		<section class="space-y-6">
+			<h1 class="text-3xl font-bold tracking-tight">About Me</h1>
+			<p class="text-lg leading-relaxed text-stone-600">
+				I'm a software engineer who enjoys building web applications and tools.
+			</p>
+		</section>
+	}
+}

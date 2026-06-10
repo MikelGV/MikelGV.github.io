@@ -1,0 +1,26 @@
+# syntax=docker/dockerfile:1
+FROM golang:1.25-alpine AS dev
+
+WORKDIR /app
+
+# Install air for Go hot reload
+RUN go install github.com/air-verse/air@latest
+
+# Download Tailwind CSS v4 standalone CLI (musl build for Alpine)
+RUN apk add --no-cache curl libstdc++ libgcc \
+ && curl -fsSL -o /usr/local/bin/tailwindcss https://github.com/tailwindlabs/tailwindcss/releases/download/v4.1.4/tailwindcss-linux-x64-musl \
+ && chmod +x /usr/local/bin/tailwindcss
+
+# Download Go module dependencies first (layer caching)
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Copy the rest of the source
+COPY . .
+
+    # Generate initial templ code and build initial CSS
+RUN go tool templ generate && tailwindcss -i static/css/input.css -o static/css/output.css
+
+EXPOSE 7331 8080
+
+CMD ["sh", "scripts/dev.sh"]
