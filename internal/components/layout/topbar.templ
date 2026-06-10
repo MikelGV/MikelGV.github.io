@@ -6,50 +6,50 @@ package layout
 templ TopBar(active string) {
     <header class="border-b border-stone-200 bg-pf-black">
         <nav class="mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
-            <a href="/" class="text-xl font-bold tracking-tight text-pf-text">MikelGV</a>
+            <a href="/" class="text-xl font-bold tracking-tight text-pf-text font-sans">MikelGV</a>
             <ul class="flex gap-6 text-sm">
                 <li>
                     <a href="/"
                         if active == "home" {
-                            class="font-semibold text-pf-text"
+                            class="font-semibold text-pf-text font-sans"
                         } else {
-                            class="text-pf-text/60 transition-colors hover:text-pf-text"
+                            class="text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
                         }
                     >Home</a>
                 </li>
                 <li>
                     <a href="/about"
                         if active == "about" {
-                            class="font-semibold text-pf-text"
+                            class="font-semibold text-pf-text font-sans"
                         } else {
-                            class="text-pf-text/60 transition-colors hover:text-pf-text"
+                            class="text-pf-text/60 transition-colors font-sans hover:text-pf-text"
                         }
                     >About</a>
                 </li>
                 <li>
                     <a href="/projects"
                         if active == "projects" {
-                            class="font-semibold text-pf-text"
+                            class="font-semibold text-pf-text font-sans"
                         } else {
-                            class="text-pf-text/60 transition-colors hover:text-pf-text"
+                            class="text-pf-text/60 transition-colors hover:text-pf-text font-sans"
                         }
                     >Projects</a>
                 </li>
                 <li>
                     <a href="/blog"
                         if active == "blog" {
-                            class="font-semibold text-pf-text"
+                            class="font-semibold text-pf-text font-sans"
                         } else {
-                            class="text-pf-text/60 transition-colors hover:text-pf-text"
+                            class="text-pf-text/60 transition-colors hover:text-pf-text font-sans"
                         }
                     >Blog</a>
                 </li>
                 <li>
                     <a href="/contact"
                         if active == "contact" {
-                            class="font-semibold text-pf-text"
+                            class="font-semibold text-pf-text font-sans"
                         } else {
-                            class="text-pf-text/60 transition-colors hover:text-pf-text"
+                            class="text-pf-text/60 transition-colors hover:text-pf-text font-sans"
                         }
                     >Contact</a>
                 </li>
