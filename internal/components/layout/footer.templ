@@ -7,11 +7,31 @@ import "time"
  **/
 templ Footer() {
     <footer class="border-t py-8 text-center text-sm text-pf-text/50 bg-pf-black">
-        <div id="left" class="">this his left</div>
+        <div id="left" class="">
+            <li class="grid">
+            <ul class="">
+                <a class="linkedin.com/user" target="blank">LinkedIn</a>
+            </ul>
+            <ul class="">
+                <a class="github.com/MikelGV" target="blank">Github</a>
+            </ul>
+            <ul class="">
+                <a class="X.com/mikisodlag" target="blank">X</a>
+            </ul>
+            <ul class="">
+                <a class="" href="instagram.com/MikelGV" target="blank">Instagram</a>
+            </ul>
+            </li>
+        </div>
         <span id="center" class="font-sans">
             { time.Now().Year() } MikelGV. All rights reserved.
         </span>
-        <div id="right" class="">this is right</div>
+        <div id="right" class="">
+            <li class="grid">
+            <ul class="">mikelgaldosv@gmail.com</ul>
+            <ul class="">Based In Spain</ul>
+            </li>
+        </div>
     </footer>
     
 }
