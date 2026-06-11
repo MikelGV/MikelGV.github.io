@@ -7,7 +7,11 @@ import "time"
  **/
 templ Footer() {
     <footer class="border-t py-8 text-center text-sm text-pf-text/50 bg-pf-black">
-        { time.Now().Year() } MikelGV. All rights reserved.
+        <div id="left" class="">this his left</div>
+        <span id="center" class="font-sans">
+            { time.Now().Year() } MikelGV. All rights reserved.
+        </span>
+        <div id="right" class="">this is right</div>
     </footer>
     
 }
