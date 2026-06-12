@@ -1,14 +1,38 @@
 package views
 
-import "github.com/MikelGV/Personal-Website/internal/components/layout"
+import (
+    "github.com/MikelGV/Personal-Website/internal/components/layout"
+    "github.com/MikelGV/Personal-Website/internal/components/ui"
+)
 
 templ Home() {
 	@layout.Base("MikelGV", "home") {
-		<section class="space-y-6">
-			<h1 class="text-4xl font-bold tracking-tight">MikelGV</h1>
-			<p class="text-lg leading-relaxed text-stone-600">
-				Software engineer building things on the internet.
-			</p>
-		</section>
+        <div class="">
+            <div class="space-y-6">
+                <div id="left" class="">
+                    <h1 class="text-4xl font-bold tracking-tight font-aldrich">
+                        Hi, I'm Mikel Galdos - Software Developer
+                    </h1>
+                    <p class="text-md leading-relaxed text-stone-600 font-aldrich">
+                        Summary
+                    </p>
+                    <p class="text-lg leading-relaxed text-stone-600 font-aldrich">
+                        Started in 2019 as a freelance MERN developer, quietly helping local businesses build and maintain websites during the COVID period. 
+                    </p>
+                    <p class="text-lg leading-relaxed text-stone-600 font-aldrich">
+                        Later joined an early-stage startup (Digital Forge Works), where I designed and developed custom web applications and scalable APIs 
+                        using Golang, Next.js, and PostgreSQL, delivering measurable gains in efficiency and performance. Self-taught, proactive, and 
+                        specialized in building high-performance systems and developer tools.
+                    </p>
+                </div>
+                <div id="right-button" class="">
+                </div>
+                <div id="reachout" class="">
+                </div>
+            </div>
+            @PopularProjects()
+            @PopularBlogs()
+            @PopularContact()
+        </div>
 	}
 }

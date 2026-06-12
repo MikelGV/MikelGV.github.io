@@ -1,13 +1,26 @@
-package layout 
+package layout
 
 import "time"
 
-/**
- * This is the footer component
- **/
 templ Footer() {
-    <footer class="border-t py-8 text-center text-sm text-pf-text/50 bg-pf-black">
-        { time.Now().Year() } MikelGV. All rights reserved.
+    <footer class="border-t border-stone-200 py-8 text-sm text-pf-text/50">
+        <div class="mx-auto grid max-w-4xl grid-cols-3 gap-4 px-4">
+            <div class="grid grid-cols-2 gap-x-6">
+                <a href="https://linkedin.com/in/mikelgv" target="_blank" class="font-aldrich" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/MikelGV" target="_blank" class="font-aldrich" rel="noopener noreferrer">GitHub</a>
+                <a href="https://x.com/mikisodlag" target="_blank" class="font-aldrich" rel="noopener noreferrer">X</a>
+                <a href="https://instagram.com/MikelGV" target="_blank" class="font-aldrich" rel="noopener noreferrer">Instagram</a>
+            </div>
+            <div></div>
+            <div class="grid content-start gap-1">
+                <a href="mailto:mikelgaldosv@gmail.com" class="font-aldrich">mikelgaldosv@gmail.com</a>
+                <span class="font-aldrich">Based In Spain</span>
+            </div>
+            <div></div>
+            <div class="text-center font-aldrich">
+                &copy; { time.Now().Year() } MikelGV. All rights reserved.
+            </div>
+            <div></div>
+        </div>
     </footer>
-    
 }
