@@ -7,32 +7,38 @@ import (
 
 templ Home() {
 	@layout.Base("MikelGV", "home") {
-        <div class="">
-            <div class="space-y-6">
-                <div id="left" class="">
-                    <h1 class="text-4xl font-bold tracking-tight font-aldrich">
-                        Hi, I'm Mikel Galdos - Software Developer
-                    </h1>
-                    <p class="text-md leading-relaxed text-stone-600 font-aldrich">
-                        Summary
-                    </p>
-                    <p class="text-lg leading-relaxed text-stone-600 font-aldrich">
-                        Started in 2019 as a freelance MERN developer, quietly helping local businesses build and maintain websites during the COVID period. 
-                    </p>
-                    <p class="text-lg leading-relaxed text-stone-600 font-aldrich">
-                        Later joined an early-stage startup (Digital Forge Works), where I designed and developed custom web applications and scalable APIs 
-                        using Golang, Next.js, and PostgreSQL, delivering measurable gains in efficiency and performance. Self-taught, proactive, and 
-                        specialized in building high-performance systems and developer tools.
-                    </p>
+        <div class="space-y-6">
+            <div class="grid grid-cols-[1fr_auto] gap-x-8 gap-y-6">
+                <h1 class="col-start-1 row-start-1 text-4xl font-aldric tracking-tight text-pf-text">
+                    Hi, I'm Mikel Galdos - Software Developer
+                </h1>
+                <p class="col-start-1 row-start-2 text-md leading-relaxed font-aldric text-pf-text/80">
+                    Summary
+                </p>
+                <p class="col-start-1 row-start-3 text-lg font-aldric leading-relaxed text-pf-text/80">
+                    Started in 2019 as a freelance MERN developer, quietly helping local businesses build and maintain websites during the COVID period.
+                </p>
+                <div class="col-start-2 row-start-3 flex items-center justify-center gap-3">
+                    <a href="/resume"
+                        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-aldric font-medium transition-colors hover:bg-pf-accent hover:text-pf-bg">
+                        CV
+                    </a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" h-5 w-5 rotate-140">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
                 </div>
-                <div id="right-button" class="">
-                </div>
-                <div id="reachout" class="">
-                </div>
+                <p class="col-start-1 row-start-4 text-lg leading-relaxed font-aldric text-pf-text/80">
+                    Later joined an early-stage startup (Digital Forge Works), where I designed and developed custom web applications and scalable APIs
+                    using Golang, Next.js, and PostgreSQL, delivering measurable gains in efficiency and performance. Self-taught, proactive, and
+                    specialized in building high-performance systems and developer tools.
+                </p>
             </div>
-            @PopularProjects()
-            @PopularBlogs()
-            @PopularContact()
+            <div id="reachout" class="border-t border-gray-200">
+            </div>
+            @ui.PopularProjects()
+            @ui.PopularBlogs()
+            @ui.LandingContact()
         </div>
 	}
 }

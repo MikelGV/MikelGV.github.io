@@ -1,7 +1,11 @@
 package views
 
-/**
- * I have to convert the .md file in the resume to html and add css with tailwind
- **/
+import "github.com/MikelGV/Personal-Website/internal/components/layout"
 
-templ Resume() {}
+templ Resume() {
+	@layout.Base("Resume - MikelGV", "") {
+		<div class="py-12 text-center">
+			<p class="text-pf-text/60">Coming soon...</p>
+		</div>
+	}
+}

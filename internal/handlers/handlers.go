@@ -62,6 +62,16 @@ func ProjectHandler() http.Handler {
 	})
 }
 
+func ResumeHandler() http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodGet {
+			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+			return
+		}
+		views.Resume().Render(r.Context(), w)
+	})
+}
+
 func ProjectsHandler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodGet {
