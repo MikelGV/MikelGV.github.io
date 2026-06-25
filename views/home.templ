@@ -8,23 +8,25 @@ import (
 templ Home() {
 	@layout.Base("MikelGV", "home") {
         <div class="space-y-6">
-            <div class="space-y-6 xl:grid xl:grid-cols-[1fr_auto] xl:gap-x-8 xl:gap-y-6 xl:space-y-0">
-                <div class="xl:col-start-1 xl:row-start-1">
-                    <h1 class="text-3xl font-aldrich tracking-tight text-pf-text xl:text-4xl">
-                        Hi, I'm Mikel Galdos
+            <div class="space-y-6 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:gap-y-6 lg:space-y-0">
+                <div id="top" class="lg:col-span-3 space-y-6">
+                    <h1 class="text-3xl font-aldrich tracking-tight text-pf-text lg:text-4xl">
+                        Hi, I'm Mikel Galdos - Software
                         <br/>
-                        Software Developer
+                        Developer
                     </h1>
-                    <p class="xl:text-md text-base leading-relaxed font-aldrich text-pf-text/80">
+                    <p class="text-base leading-relaxed font-aldrich text-pf-text/80 lg:text-lg">
                         Summary
                     </p>
-                    <p class="text-base font-aldrich leading-relaxed text-pf-text/80 xl:text-lg">
-                        Started in 2019 as a freelance MERN developer, quietly helping local businesses build and maintain websites during the COVID period.
+                    <p class="text-base font-aldrich leading-relaxed text-pf-text/80 lg:text-lg">
+                        Started in 2019 as a freelance MERN developer, quietly helping local businesses build and maintain websites during 
+                        <br/>
+                        the COVID period.
                     </p>
                 </div>
-                <div class="flex items-center justify-start xl:col-start-2 xl:row-start-3 xl:justify-center mt-4 xl:mt-0">
+                <div id="middle-right" class="flex items-center justify-start lg:col-start-3 lg:justify-end mt-4 lg:mt-0">
                     <a href="/resume"
-                        class="inline-flex items-center gap-2 px-4 text-sm font-medium">
+                        class="inline-flex items-center px-4 text-sm font-medium">
                         CV
                     </a>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 rotate-300">
@@ -32,18 +34,17 @@ templ Home() {
                         <polyline points="12 5 19 12 12 19"/>
                     </svg>
                 </div>
-                <div class="xl:col-start-3 xl:row-start-1 xl:justify-center mt-4 xl:mt-0">
-                <p class="text-base leading-relaxed font-aldrich text-pf-text/80 xl:text-lg">
-                    Later joined an early-stage startup (Digital Forge Works), where I designed and developed custom web applications and scalable APIs
-                    using Golang, Next.js, and PostgreSQL, delivering measurable gains in efficiency and performance. Self-taught, proactive, and
-                    specialized in building high-performance systems and developer tools.
-                </p>
+                <div id="bottom" class="lg:col-span-3">
+                    <p class="text-base leading-relaxed font-aldrich text-pf-text/80 lg:text-lg">
+                        Later joined an early-stage startup (Digital Forge Works), where I designed and developed custom web applications and scalable APIs
+                        using Golang, Next.js, and PostgreSQL, delivering measurable gains in efficiency and performance. Self-taught, proactive, and
+                        specialized in building high-performance systems and developer tools.
+                    </p>
                 </div>
-
             </div>
             <div id="reachout" class="border-t border-gray-200/80" style="width: 100vw; margin-left: calc(50% - 50vw);">
                 <div class="mx-auto max-w-6xl px-2 pt-4">
-                    <div class="flex flex-col xl:flex-row">
+                    <div class="flex flex-col lg:flex-row">
                         <div class="flex-1">
                             <p class="text-lg font-semibold text-pf-text/80">Reach Out</p>
                             <div class="mt-2 space-y-2">
@@ -63,7 +64,7 @@ templ Home() {
                                 </span>
                             </div>
                         </div>
-                        <div class="flex-1 mt-6 xl:mt-0">
+                        <div class="flex-1 mt-6 lg:mt-0">
                             <p class="text-lg font-semibold text-pf-text/80">Experience</p>
                             <div class="mt-2 space-y-4">
                                 <div class="grid grid-cols-3 gap-2">
@@ -77,10 +78,10 @@ templ Home() {
                                     <p class="text-pf-text/80 text-sm text-right font-aldrich">2024-2025</p>
                                 </div>
                             </div>
-                            <div class="relative mt-4 pt-4 border-t border-gray-200/80 xl:border-t-0">
-                                <div class="hidden xl:block absolute top-0 h-px bg-gray-200/80" style="left: -4px; width: calc(50vw + 4px);"></div>
+                            <div class="relative mt-4 pt-4 border-t border-gray-200/80 lg:border-t-0">
+                                <div class="hidden lg:block absolute top-0 h-px bg-gray-200/80" style="left: -4px; width: calc(50vw + 4px);"></div>
                                 <p class="relative z-10 text-sm font-semibold text-pf-text/80 font-aldrich">Technologies</p>
-                                <div class="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 xl:grid-cols-3">
+                                <div class="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 lg:grid-cols-3">
                                     <p class="text-pf-text/60 text-xs font-aldrich">Golang</p>
                                     <p class="text-pf-text/60 text-xs font-aldrich">Kubernetes</p>
                                     <p class="text-pf-text/60 text-xs font-aldrich">NodeJS</p>
