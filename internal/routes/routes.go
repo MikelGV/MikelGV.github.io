@@ -25,4 +25,6 @@ func AddRoutes(
 	mux.Handle("/blog/{id}", handlers.PostHandler())
 
 	mux.Handle("/contact", handlers.ContactHandler())
+
+	mux.Handle("/resume", handlers.ResumeHandler())
 }
