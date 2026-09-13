@@ -4,11 +4,86 @@ import "github.com/MikelGV/Personal-Website/internal/components/layout"
 
 templ AboutMe() {
 	@layout.Base("About Me — MikelGV", "about") {
-		<section class="space-y-6">
-			<h1 class="text-3xl font-bold tracking-tight">About Me</h1>
-			<p class="text-lg leading-relaxed text-stone-600">
-				I'm a software engineer who enjoys building web applications and tools.
-			</p>
+		<section class="flex flex-col space-y-8">
+            <div class="relative flex w-full justify-start" id="first">
+                <div class="hidden lg:block absolute bottom-0 h-px bg-gray-200/80" style="left: calc(-50vw + 50%); width: calc(50vw + 20% + 4px);"></div>
+                <div class="relative w-full md:w-3/5 lg:w-[70%] shrink-0 text-left border-b border-gray-200/80 lg:border-b-0 pb-4">
+                <h1 class="text-xl font-bold tracking-tight font-aldrich underline">ABOUT ME</h1>
+                <p class="text-lg font-aldrich leading-relaxed">
+                    I'm a backend-focused software developer from Spain, self-taught, 
+                    with a passion for distributed systems, developer tooling, 
+                    and building things that are fast, reliable, and actually useful.
+                </p>
+                </div>
+            </div>
+            <div class="relative flex w-full justify-end" id="second">
+                <div class="hidden lg:block absolute bottom-0 h-px bg-gray-200/80" style="left: calc(30% - 4px); width: calc(50vw + 20% + 4px);"></div>
+                <div class="relative w-full md:w-3/5 lg:w-[70%] shrink-0 text-left border-b border-gray-200/80 lg:border-b-0 pb-4">
+                <h2 class="font-aldrich font-semibold">How I got here</h2>
+                <p class="font-aldrich">
+                I started programming seriously in 2019, teaching myself through projects and experimentation. 
+                During the COVID-19 pandemic, an opportunity to work abroad fell through, so I pivoted to freelance web development.
+                </p>
+                <p class="font-aldrich mt-10">
+                Working directly with clients taught me how to build software for 
+                real people rather than just for tutorials or personal projects. 
+                I had to figure things out independently, work within constraints, 
+                communicate clearly, and ship things that actually worked.
+                </p>
+                <p class="font-aldrich">
+                    That experience eventually led me toward backend engineering and more complex systems. 
+                    I later joined an early-stage CI/CD project as an independent contributor, 
+                    where I worked on scalable APIs, container orchestration and monitoring features, 
+                    and internal tooling using Go, PostgreSQL, Docker, and Kubernetes. 
+                    Working in a small team meant dealing with ambiguity, making architectural decisions, 
+                    and often solving problems without an obvious answer.
+                </p>
+                </div>
+            </div>
+            <div class="relative flex w-full justify-start" id="third">
+                <div class="hidden lg:block absolute bottom-0 h-px bg-gray-200/80" style="left: calc(-50vw + 50%); width: calc(50vw + 20% + 4px);"></div>
+                <div class="relative w-full md:w-3/5 lg:w-[70%] shrink-0 text-left border-b border-gray-200/80 lg:border-b-0 pb-4">
+                <h2 class="font-aldrich font-semibold">What I build</h2>
+                <p class="font-aldrich">
+                    I enjoy backend systems, distributed infrastructure, and 
+                    developer tooling — understanding how things work under 
+                    the hood and building them from the ground up.
+                </p>
+                <div class="ml-6">
+                    <p class="font-aldrich">
+                        Some personal projects I’m proud of include:
+                    </p>
+                    <ul class="list-disc space-y-1 pl-5">
+                    <li class="font-aldrich">
+                        Contyard — a real-time TUI for container monitoring
+                    </li>
+                    <li class="font-aldrich">
+                        PrepPulse — a terminal tool for querying large tabular datasets
+                    </li>
+                    <li class="font-aldrich">
+                        PierceMQ — a distributed task queue built on Redis Streams and PostgreSQL
+                    </li>
+                    </ul>
+                </div>
+                <p class="font-aldrich">
+                    My main tools are Go, TypeScript/JavaScript, and Python, 
+                    with hands-on experience across PostgreSQL, 
+                    Docker, Kubernetes, AWS, Hetzner, and CI/CD pipelines.
+                </p>
+                </div>
+            </div>
+            <div class="relative flex w-full justify-end" id="fourth">
+                <div class="relative w-full md:w-3/5 lg:w-[70%] shrink-0 text-left pb-4">
+                <h2 class="font-aldrich font-semibold">
+                    What's next
+                </h2>
+                <p class="font-aldrich">
+                    I'm now looking for my next step — ideally on a remote, international 
+                    team where I can work on meaningful products, tackle challenging backend 
+                    and infrastructure problems, and continue growing as an engineer.
+                </p>
+                </div>
+            </div>
 		</section>
 	}
 }
