@@ -1,0 +1,10 @@
+package ui
+
+// AboutImage is a placeholder for a future about-page photo.
+// Pass a Tailwind aspect class (e.g. "aspect-video", "aspect-[3/4]") to vary the shape per section.
+// Swap the inner <p> for an <img> when real photos are ready.
+templ AboutImage(label string, aspect string) {
+	<div class={ "flex w-full items-center justify-center border border-gray-200/80 bg-pf-text/5 " + aspect }>
+		<p class="font-aldrich text-sm text-pf-text/40">{ label }</p>
+	</div>
+}

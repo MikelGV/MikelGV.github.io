@@ -4,7 +4,8 @@ FROM golang:1.25-alpine AS dev
 WORKDIR /app
 
 # Install air for Go hot reload
-RUN go install github.com/air-verse/air@latest
+# RUN go install github.com/air-verse/air@latest
+RUN go install github.com/air-verse/air@v1.65.3
 
 # Download Tailwind CSS v4 standalone CLI (musl build for Alpine)
 RUN apk add --no-cache curl libstdc++ libgcc \

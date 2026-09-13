@@ -1,11 +1,12 @@
 package views
 
 import (
-    "github.com/MikelGV/Personal-Website/internal/components/layout"
-    "github.com/MikelGV/Personal-Website/internal/components/ui"
+	"github.com/MikelGV/Personal-Website/internal/components/layout"
+	"github.com/MikelGV/Personal-Website/internal/components/ui"
+	"github.com/MikelGV/Personal-Website/internal/data"
 )
 
-templ Home() {
+templ Home(projects []data.Project) {
 	@layout.Base("MikelGV", "home") {
         <div class="space-y-6">
             <div class="space-y-6 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:gap-y-6 lg:space-y-0">
@@ -36,7 +37,7 @@ templ Home() {
                 </div>
                 <div id="bottom" class="lg:col-span-3">
                     <p class="text-base leading-relaxed font-aldrich text-pf-text/80 lg:text-lg">
-                        Later joined an early-stage startup (Digital Forge Works), where I designed and developed custom web applications and scalable APIs
+                        Later joined an early-stage CI/CD project as an independent contributor (Digital Forge Works), where I designed and developed custom web applications and scalable APIs
                         using Golang, Next.js, and PostgreSQL, delivering measurable gains in efficiency and performance. Self-taught, proactive, and
                         specialized in building high-performance systems and developer tools.
                     </p>
@@ -97,9 +98,9 @@ templ Home() {
                     </div>
                 </div>
             </div>
-            @ui.PopularProjects()
-            @ui.PopularBlogs()
-            @ui.LandingContact()
+			@ui.PopularProjects(projects)
+			@ui.PopularBlogs()
+			@ui.LandingContact()
         </div>
 	}
 }

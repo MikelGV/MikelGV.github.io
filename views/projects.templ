@@ -1,14 +1,104 @@
 package views
 
-import "github.com/MikelGV/Personal-Website/internal/components/layout"
+import (
+	"github.com/MikelGV/Personal-Website/internal/components/layout"
+	"github.com/MikelGV/Personal-Website/internal/components/ui"
+	"github.com/MikelGV/Personal-Website/internal/data"
+)
 
-templ Projects() {
+templ Projects(projects []data.Project) {
 	@layout.Base("Projects — MikelGV", "projects") {
-		<section class="space-y-6">
-			<h1 class="text-3xl font-bold tracking-tight">Projects</h1>
-			<p class="text-lg leading-relaxed text-stone-600">
-				A collection of things I've built.
-			</p>
+		<section>
+			<div class="flex flex-wrap items-baseline gap-3">
+				<h1 class="text-xl font-bold font-aldrich tracking-tight">Selected Projects</h1>
+				<p class="font-aldrich text-lg text-pf-text/60">- open-source and personal work</p>
+			</div>
+			<div class="mt-4 rounded border border-gray-200/80 bg-pf-text/5 px-4 py-3 mb-10">
+				<p class="font-aldrich text-sm leading-relaxed text-pf-text/80">
+					A curated set, not an exhaustive list. As a freelancer (2020-2024) I built and maintained several MERN sites
+					serving local businesses. That client code is under NDA or lost to time,
+					so it is not listed here. References available on request via
+					<a href="/contact" class="text-pf-accent hover:text-pf-text">contact</a>.
+				</p>
+			</div>
 		</section>
+		<div class="border-t border-gray-200/80" style="width: 100vw; margin-left: calc(50% - 50vw);">
+			<div class="mx-auto max-w-6xl px-2 pt-4 pb-8">
+				<div class="flex flex-col gap-8 lg:flex-row">
+					<div class="flex-1 lg:sticky lg:top-4 lg:self-start">
+						<p class="text-lg font-semibold font-aldrich text-pf-text/80 font-aldrich">Preview</p>
+						<div id="project-preview" class="mt-2">
+							if len(projects) > 0 {
+								@ui.ProjectPreview(projects[0])
+							}
+						</div>
+					</div>
+					<div class="flex-1">
+						<div class="grid grid-cols-[2.5rem_1fr_1fr_1fr_2rem] items-center gap-2">
+							<p class="text-lg font-semibold text-pf-text/80 font-aldrich">#Id</p>
+							<p class="text-lg font-semibold text-pf-text/80 font-aldrich">Project Title</p>
+							<p class="text-lg font-semibold text-pf-text/80 font-aldrich">Blogs about it</p>
+							<p class="text-lg font-semibold text-pf-text/80 font-aldrich">Field</p>
+							<span></span>
+						</div>
+						<div class="mt-2 max-h-[34rem] overflow-x-auto overflow-y-auto">
+							for i, p := range projects {
+								<div
+									hx-get={ "/projects/preview/" + p.ID }
+									hx-target="#project-preview"
+									hx-swap="innerHTML"
+									hx-on:click="document.querySelectorAll('.proj-row').forEach(e=>e.classList.remove('bg-pf-text/5')); this.classList.add('bg-pf-text/5')"
+									class={ "proj-row grid cursor-pointer grid-cols-[2.5rem_1fr_1fr_1fr_2rem] items-center gap-2 rounded border-b border-gray-200/80 px-2 py-3 transition-colors hover:bg-pf-text/5", templ.KV("bg-pf-text/5", i == 0) }
+								>
+									<p class="text-sm font-aldrich text-pf-text/60">[{ p.ID }]</p>
+									<div class="min-w-0">
+										<div class="flex flex-wrap items-baseline gap-x-2">
+											<p class="text-sm font-aldrich text-pf-text/80">{ p.Name }</p>
+											if p.Year != "" {
+												<p class="font-aldrich text-xs text-pf-text/40">{ p.Year }</p>
+											}
+										</div>
+										if len(p.Techs) > 0 {
+											<div class="mt-1 flex flex-wrap gap-1">
+												for _, t := range p.Techs {
+													<span class="rounded border border-gray-200/80 px-1.5 py-0.5 font-aldrich text-xs text-pf-text/60">{ t }</span>
+												}
+											</div>
+										}
+									</div>
+									<div class="space-y-1">
+										if len(p.Blogs) > 0 {
+											for _, b := range p.Blogs {
+												<a
+													href={ "/blog/" + b.ID }
+													onclick="event.stopPropagation()"
+													class="block text-sm font-aldrich text-pf-accent hover:text-pf-text"
+												>{ b.Title }</a>
+											}
+										} else {
+											<p class="text-sm font-aldrich text-pf-text/40">—</p>
+										}
+									</div>
+									<p class="text-sm font-aldrich text-pf-text/80">{ p.Field }</p>
+									<a
+										href={ p.GitHub }
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label={ p.Name + " on GitHub" }
+										onclick="event.stopPropagation()"
+										class="text-pf-text/60 transition-colors hover:text-pf-accent"
+									>
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+											<line x1="7" y1="17" x2="17" y2="7"></line>
+											<polyline points="7 7 17 7 17 17"></polyline>
+										</svg>
+									</a>
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	}
 }

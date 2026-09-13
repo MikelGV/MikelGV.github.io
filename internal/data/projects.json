@@ -1,0 +1,90 @@
+[
+  {
+    "id": "001",
+    "name": "PierceMQ",
+    "description": "A distributed task queue built in Go on Redis Streams and PostgreSQL, designed for high-throughput, low-latency delivery. Built to learn distributed primitives hands-on: persistence, retries, and at-least-once semantics.",
+    "field": "Backend / Distributed Systems",
+    "blogs_about_it": [],
+    "image": "/static/images/piercemq.png",
+    "github": "https://github.com/MikelGV/piercemq",
+    "year": "2026",
+    "techs": ["Go", "Redis Streams", "PostgreSQL"]
+  },
+  {
+    "id": "002",
+    "name": "Contyard",
+    "description": "A real-time TUI for monitoring and managing Docker containers on a local or remote host. Built to make container state readable at a glance without leaving the terminal.",
+    "field": "Developer Tooling / TUI",
+    "blogs_about_it": [],
+    "image": "/static/images/contyard.png",
+    "github": "https://github.com/MikelGV/Contyard",
+    "year": "2025",
+    "techs": ["Go", "Docker API", "Bubble Tea"]
+  },
+  {
+    "id": "003",
+    "name": "PrepPulse",
+    "description": "A terminal tool for exploring large tabular datasets, with text-based charts (histograms, scatter plots) and basic statistical summaries. Built for quick data sanity-checks without opening a notebook.",
+    "field": "Developer Tooling / CLI",
+    "blogs_about_it": [],
+    "image": "/static/images/preppulse.png",
+    "github": "https://github.com/MikelGV/PrepPulse",
+    "year": "2025",
+    "techs": ["Go", "TUI", "CSV"]
+  },
+  {
+    "id": "004",
+    "name": "WCTool",
+    "description": "A Go reimplementation of the classic Unix wc utility for word, line, and byte counts. A small exercise in CLI design, flags, and efficient file I/O.",
+    "field": "Developer Tooling / CLI",
+    "blogs_about_it": [],
+    "image": "/static/images/WcTool.png",
+    "github": "https://github.com/MikelGV/WcTool",
+    "year": "2024",
+    "techs": ["Go", "CLI"]
+  },
+  {
+    "id": "005",
+    "name": "Social-Media",
+    "description": "A JavaScript full-stack social platform inspired by Facebook, from my freelance MERN period. Covers auth, posts, and feeds — the kind of CRUD and data-modeling work behind most small-business client sites.",
+    "field": "Web App / Full Stack",
+    "blogs_about_it": [],
+    "image": "/static/images/social-media.png",
+    "github": "https://github.com/MikelGV/Social-Media",
+    "year": "2022",
+    "techs": ["JavaScript", "Node.js", "Express", "MongoDB"]
+  },
+  {
+    "id": "006",
+    "name": "PathFindingVisualization",
+    "description": "A Python visualization of the A* pathfinding algorithm. Pick start and end points and watch the search expand toward the shortest path — an early algorithms-learning project.",
+    "field": "Visualization / Pathfinding",
+    "blogs_about_it": [],
+    "image": "/static/images/path-finding-visualization.png",
+    "github": "https://github.com/MikelGV/PathFindingVisualization",
+    "year": "2021",
+    "techs": ["Python", "Pygame", "A*"]
+  },
+  {
+    "id": "007",
+    "name": "SudokuSolver",
+    "description": "A Sudoku solver using a backtracking algorithm with a Pygame GUI. An early project for practicing recursion and simple UI work.",
+    "field": "Algorithms / GUI",
+    "blogs_about_it": [],
+    "image": "/static/images/sudoku-solver.png",
+    "github": "https://github.com/MikelGV/SudokuSolver",
+    "year": "2021",
+    "techs": ["Python", "Pygame", "Backtracking"]
+  },
+  {
+    "id": "008",
+    "name": "WeatherApp",
+    "description": "A small weather app built with Flask on the OpenWeather API. From the early learning period — fetching, rendering, and wiring a third-party API end to end.",
+    "field": "Full Stack / API",
+    "blogs_about_it": [],
+    "image": "/static/images/weathe-rapp.png",
+    "github": "https://github.com/MikelGV/WeatherApp",
+    "year": "2021",
+    "techs": ["Python", "Flask", "OpenWeather API"]
+  }
+]
