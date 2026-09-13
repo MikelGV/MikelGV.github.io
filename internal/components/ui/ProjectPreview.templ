@@ -1,0 +1,38 @@
+package ui
+
+import "github.com/MikelGV/Personal-Website/internal/data"
+
+templ ProjectPreview(p data.Project) {
+	<div class="space-y-4">
+		<div class="relative flex aspect-video w-full items-center justify-center overflow-hidden border border-gray-200/80 bg-pf-text/5">
+			if p.Image != "" {
+				<img
+					src={ p.Image }
+					alt={ p.Name + " preview" }
+					loading="lazy"
+					onerror="this.style.display='none'"
+					class="absolute inset-0 h-full w-full object-cover"
+				/>
+			}
+			<p class="font-aldrich text-sm text-pf-text/40">{ p.Name } preview</p>
+		</div>
+		<div class="flex flex-wrap items-baseline gap-x-2">
+			<p class="text-lg font-semibold font-aldrich text-pf-text">{ p.Name }</p>
+			if p.Year != "" {
+				<p class="font-aldrich text-sm text-pf-text/40">{ p.Year }</p>
+			}
+		</div>
+		<p class="font-aldrich text-sm text-pf-text/60">{ p.Field }</p>
+		<p class="text-sm font-aldrich leading-relaxed text-pf-text/80">{ p.Description }</p>
+		if len(p.Techs) > 0 {
+			<div class="flex flex-wrap gap-1.5">
+				for _, t := range p.Techs {
+					<span class="rounded border border-gray-200/80 px-2 py-0.5 font-aldrich text-xs text-pf-text/60">{ t }</span>
+				}
+			</div>
+		}
+		if p.GitHub != "" {
+			<a href={ p.GitHub } target="_blank" rel="noopener noreferrer" class="inline-block font-aldrich text-sm text-pf-accent hover:text-pf-text">View on GitHub →</a>
+		}
+	</div>
+}

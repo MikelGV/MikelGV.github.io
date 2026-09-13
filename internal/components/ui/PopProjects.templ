@@ -1,72 +1,43 @@
 package ui
 
-templ PopularProjects() {
-    <div class="border-t border-gray-200/80" style="width: 100vw; margin-left: calc(50% - 50vw);">
-        <div class="mx-auto max-w-6xl px-2 pt-4 pb-8">
-            <p class="text-lg font-semibold font-aldrich text-pf-text/80">Cool Projects</p>
-            <div class="ml-18 border-b border-gray-200/80" style="margin-right: calc(-50vw + 50% - 4px);">
-                <div class="flex items-start py-4">
-                    <div class="w-48 shrink-0">
-                        <p class="text-base font-semibold text-pf-text font-aldrich">PierceMQ</p>
-                    </div>
-                    <div class="flex items-center justify-between flex-1">
-                        <div class="flex items-center gap-8">
-                            <p class="text-sm text-pf-text/80 font-aldrich max-w-sm">
-                                A lightweight message queue built in Go, designed for high-throughput
-                                and low-latency message delivery.
-                            </p>
-                            <a href="https://github.com/MikelGV/piercemq" target="_blank" class="text-sm text-pf-accent font-aldrich hover:text-pf-text whitespace-nowrap">
-                                github.com/MikelGV/piercemq
-                            </a>
-                        </div>
-                        <a href="/project/piercemq" class="text-sm font-aldrich text-pf-text/80 hover:text-pf-accent border border-gray-200/80 rounded px-3 py-1.5 mr-20 whitespace-nowrap">
-                            Learn More
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="ml-18 border-b border-gray-200/80" style="margin-right: calc(-50vw + 50% - 8px);">
-                <div class="flex items-start py-4">
-                    <div class="w-48 shrink-0">
-                        <p class="text-base font-semibold text-pf-text font-aldrich">PierceMQ</p>
-                    </div>
-                    <div class="flex items-center justify-between flex-1">
-                        <div class="flex items-center gap-8">
-                            <p class="text-sm text-pf-text/80 font-aldrich max-w-sm">
-                                A lightweight message queue built in Go, designed for high-throughput
-                                and low-latency message delivery.
-                            </p>
-                            <a href="https://github.com/MikelGV/piercemq" target="_blank" class="text-sm text-pf-accent font-aldrich hover:text-pf-text whitespace-nowrap">
-                                github.com/MikelGV/piercemq
-                            </a>
-                        </div>
-                        <a href="/project/piercemq" class="text-sm font-aldrich text-pf-text/80 hover:text-pf-accent border border-gray-200/80 rounded px-3 mr-20 py-1.5 whitespace-nowrap">
-                            Learn More
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="ml-18" style="margin-right: calc(-50vw + 50% - 8px);">
-                <div class="flex items-start py-4">
-                    <div class="w-48 shrink-0">
-                        <p class="text-base font-semibold text-pf-text font-aldrich">PierceMQ</p>
-                    </div>
-                    <div class="flex items-center justify-between flex-1">
-                        <div class="flex items-center gap-8">
-                            <p class="text-sm text-pf-text/80 font-aldrich max-w-sm">
-                                A lightweight message queue built in Go, designed for high-throughput
-                                and low-latency message delivery.
-                            </p>
-                            <a href="https://github.com/MikelGV/piercemq" target="_blank" class="text-sm text-pf-accent font-aldrich hover:text-pf-text whitespace-nowrap">
-                                github.com/MikelGV/piercemq
-                            </a>
-                        </div>
-                        <a href="/project/piercemq" class="text-sm font-aldrich text-pf-text/80 hover:text-pf-accent border border-gray-200/80 rounded px-3 py-1.5 whitespace-nowrap mr-20 ">
-                            Learn More
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+import "github.com/MikelGV/Personal-Website/internal/data"
+
+templ PopularProjects(projects []data.Project) {
+	<div class="border-t border-gray-200/80" style="width: 100vw; margin-left: calc(50% - 50vw);">
+		<div class="mx-auto max-w-6xl px-2 pt-4 pb-8">
+			<div class="flex items-baseline gap-3">
+				<p class="text-lg font-semibold font-aldrich text-pf-text/80">Selected Projects</p>
+				<a href="/projects" class="font-aldrich text-sm text-pf-accent hover:text-pf-text">View all →</a>
+			</div>
+			for i, p := range projects {
+				if i < 3 {
+					<div class="ml-18 border-b border-gray-200/80" style="margin-right: calc(-50vw + 50% - 8px);">
+						<div class="flex items-start py-4">
+							<div class="w-48 shrink-0">
+								<p class="text-base font-semibold text-pf-text font-aldrich">{ p.Name }</p>
+								if p.Year != "" {
+									<p class="font-aldrich text-xs text-pf-text/40">{ p.Year }</p>
+								}
+							</div>
+							<div class="flex items-center justify-between flex-1">
+								<div class="flex items-center gap-8">
+									<p class="text-sm text-pf-text/80 font-aldrich max-w-sm">
+										{ p.Description }
+									</p>
+									if p.GitHub != "" {
+										<a href={ p.GitHub } target="_blank" rel="noopener noreferrer" class="text-sm text-pf-accent font-aldrich hover:text-pf-text whitespace-nowrap">
+											GitHub →
+										</a>
+									}
+								</div>
+								<a href="/projects" class="text-sm font-aldrich text-pf-text/80 hover:text-pf-accent border border-gray-200/80 rounded px-3 mr-20 py-1.5 whitespace-nowrap">
+									Learn More
+								</a>
+							</div>
+						</div>
+					</div>
+				}
+			}
+		</div>
+	</div>
 }

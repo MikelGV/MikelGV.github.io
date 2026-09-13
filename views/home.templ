@@ -1,11 +1,12 @@
 package views
 
 import (
-    "github.com/MikelGV/Personal-Website/internal/components/layout"
-    "github.com/MikelGV/Personal-Website/internal/components/ui"
+	"github.com/MikelGV/Personal-Website/internal/components/layout"
+	"github.com/MikelGV/Personal-Website/internal/components/ui"
+	"github.com/MikelGV/Personal-Website/internal/data"
 )
 
-templ Home() {
+templ Home(projects []data.Project) {
 	@layout.Base("MikelGV", "home") {
         <div class="space-y-6">
             <div class="space-y-6 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:gap-y-6 lg:space-y-0">
@@ -97,9 +98,9 @@ templ Home() {
                     </div>
                 </div>
             </div>
-            @ui.PopularProjects()
-            @ui.PopularBlogs()
-            @ui.LandingContact()
+			@ui.PopularProjects(projects)
+			@ui.PopularBlogs()
+			@ui.LandingContact()
         </div>
 	}
 }

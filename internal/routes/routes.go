@@ -18,6 +18,8 @@ func AddRoutes(
 
 	mux.Handle("/projects", handlers.ProjectsHandler())
 
+	mux.Handle("GET /projects/preview/{id}", handlers.ProjectPreviewHandler())
+
 	mux.Handle("/project", handlers.ProjectHandler())
 
 	mux.Handle("/blog", handlers.BlogHandler())
