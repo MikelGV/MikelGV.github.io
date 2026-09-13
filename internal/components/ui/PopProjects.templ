@@ -1,6 +1,10 @@
 package ui
 
-import "github.com/MikelGV/Personal-Website/internal/data"
+import (
+	"strings"
+
+	"github.com/MikelGV/Personal-Website/internal/data"
+)
 
 templ PopularProjects(projects []data.Project) {
 	<div class="border-t border-gray-200/80" style="width: 100vw; margin-left: calc(50% - 50vw);">
@@ -11,7 +15,7 @@ templ PopularProjects(projects []data.Project) {
 			</div>
 			for i, p := range projects {
 				if i < 3 {
-					<div class="ml-18 border-b border-gray-200/80" style="margin-right: calc(-50vw + 50% - 8px);">
+					<div class={ "ml-18 border-gray-200/80", templ.KV("border-b", i < 2 && i < len(projects)-1) } style="margin-right: calc(-50vw + 50% - 8px);">
 						<div class="flex items-start py-4">
 							<div class="w-48 shrink-0">
 								<p class="text-base font-semibold text-pf-text font-aldrich">{ p.Name }</p>
@@ -25,8 +29,8 @@ templ PopularProjects(projects []data.Project) {
 										{ p.Description }
 									</p>
 									if p.GitHub != "" {
-										<a href={ p.GitHub } target="_blank" rel="noopener noreferrer" class="text-sm text-pf-accent font-aldrich hover:text-pf-text whitespace-nowrap">
-											GitHub →
+										<a href={ p.GitHub } target="_blank" rel="noopener noreferrer" class="text-sm text-pf-text font-aldrich hover:text-pf-text whitespace-nowrap">
+											{ strings.TrimPrefix(p.GitHub, "https://") }
 										</a>
 									}
 								</div>
