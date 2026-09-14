@@ -3,9 +3,98 @@ package views
 import "github.com/MikelGV/Personal-Website/internal/components/layout"
 
 templ Resume() {
-	@layout.Base("Resume - MikelGV", "") {
-		<div class="py-12 text-center">
-			<p class="text-pf-text/60">Coming soon...</p>
+	@layout.Base("CV — MikelGV", "cv") {
+		<section class="mx-auto w-full max-w-3xl space-y-10 py-8">
+			<div class="space-y-4 text-center">
+				<h1 class="font-aldrich text-3xl font-bold tracking-tight text-pf-text">MIKEL GALDOS</h1>
+				<p class="font-aldrich text-sm text-pf-text/80">
+					<a href="mailto:mikelgaldosv@gmail.com" class="hover:text-pf-accent">mikelgaldosv@gmail.com</a>
+					<span class="mx-2 text-pf-text/40">|</span>
+					<a href="https://github.com/MikelGV" target="_blank" rel="noopener noreferrer" class="hover:text-pf-accent">github.com/MikelGV</a>
+					<span class="mx-2 text-pf-text/40">|</span>
+				<a href="https://www.linkedin.com/in/mikel-galdos-ab8050187/" target="_blank" rel="noopener noreferrer" class="hover:text-pf-accent">linkedin.com/in/mikel-galdos-ab8050187</a>
+			</p>
 		</div>
+			<div class="space-y-3">
+				<h2 class="font-aldrich text-xl font-semibold text-pf-text">Skills</h2>
+				<ul class="space-y-2 font-aldrich text-sm leading-relaxed text-pf-text/80">
+					<li><span class="font-semibold text-pf-text">Programming and Scripting:</span> Golang, JavaScript, TypeScript, Python, PostgreSQL, HTML5, CSS</li>
+					<li><span class="font-semibold text-pf-text">Frameworks:</span> Go-Chi, Express.js, Django, Next.js, React.js, Tailwind, HTMX</li>
+					<li><span class="font-semibold text-pf-text">Cloud Services:</span> Amazon Web Services (AWS), Hetzner Cloud</li>
+					<li><span class="font-semibold text-pf-text">Infrastructure:</span> Docker, Git, Kubernetes, GitHub Actions</li>
+				</ul>
+			</div>
+			<div class="space-y-6">
+				<h2 class="font-aldrich text-xl font-semibold text-pf-text">Work Experience</h2>
+				<div class="space-y-3">
+					<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+						<h3 class="font-aldrich text-base font-semibold text-pf-text">Software Developer, Digital Forge Works <span class="font-normal text-pf-text/60">(Independent Contributor)</span></h3>
+						<p class="font-aldrich text-sm text-pf-text/60">June 2024 – September 2025</p>
+					</div>
+					<ul class="list-disc space-y-1 pl-5 font-aldrich text-sm leading-relaxed text-pf-text/80">
+						<li>Contributed core backend components to an early-stage CI/CD platform using Go, PostgreSQL, and Docker.</li>
+						<li>Designed and implemented scalable APIs and internal tools.</li>
+						<li>Built container orchestration monitoring features with the Docker SDK and real-time metrics.</li>
+						<li>Collaborated with a small team on architecture decisions and feature prioritization in an ambiguous environment.</li>
+						<li>Worked across AWS, Hetzner Cloud, Docker, Kubernetes, and GitHub Actions.</li>
+					</ul>
+				</div>
+				<div class="space-y-3">
+					<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+						<h3 class="font-aldrich text-base font-semibold text-pf-text">Software Web Developer <span class="font-normal text-pf-text/60">(Freelance)</span></h3>
+						<p class="font-aldrich text-sm text-pf-text/60">Jan 2020 – Feb 2023</p>
+					</div>
+					<ul class="list-disc space-y-1 pl-5 font-aldrich text-sm leading-relaxed text-pf-text/80">
+						<li>Designed and delivered custom web applications for clients using JavaScript, TypeScript, React, Node.js, Express, Django, and MongoDB.</li>
+						<li>Developed backend APIs and application features with a focus on reliability, performance, and maintainability.</li>
+						<li>Worked directly with clients to translate requirements into production-ready software and independently managed development and delivery.</li>
+					</ul>
+				</div>
+			</div>
+			<div class="space-y-6">
+				<h2 class="font-aldrich text-xl font-semibold text-pf-text">Projects</h2>
+				<div class="space-y-3">
+					<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+						<h3 class="font-aldrich text-base font-semibold text-pf-text">Contyard <span class="font-normal text-pf-text/60">| Golang, Bubbletea</span></h3>
+						<a href="https://github.com/MikelGV/Contyard" target="_blank" rel="noopener noreferrer" class="font-aldrich text-sm text-pf-accent hover:text-pf-text">github.com/MikelGV/Contyard</a>
+					</div>
+					<ul class="list-disc space-y-1 pl-5 font-aldrich text-sm leading-relaxed text-pf-text/80">
+						<li>Developed a TUI-based container monitoring tool using Golang and Bubbletea, enabling real-time metrics visualization and container management.</li>
+						<li>Integrated Docker SDK to fetch and display container stats, improving operational visibility for containerized environments.</li>
+					</ul>
+				</div>
+				<div class="space-y-3">
+					<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+						<h3 class="font-aldrich text-base font-semibold text-pf-text">PrepPulse <span class="font-normal text-pf-text/60">| Golang, Bubbletea</span></h3>
+						<a href="https://github.com/MikelGV/PrepPulse" target="_blank" rel="noopener noreferrer" class="font-aldrich text-sm text-pf-accent hover:text-pf-text">github.com/MikelGV/PrepPulse</a>
+					</div>
+					<ul class="list-disc space-y-1 pl-5 font-aldrich text-sm leading-relaxed text-pf-text/80">
+						<li>Developed a lightweight, high-performance terminal-based (TUI) application in Golang for efficient browsing, searching, and querying of large tabular data files (CSV, TSV, Parquet), featuring intuitive keyboard navigation, instant filtering, and lazy-loaded rendering for datasets exceeding hundreds of millions of rows.</li>
+					</ul>
+				</div>
+				<div class="space-y-3">
+					<div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+						<h3 class="font-aldrich text-base font-semibold text-pf-text">PierceMQ <span class="font-normal text-pf-text/60">| Golang</span></h3>
+						<a href="https://github.com/MikelGV/PierceMQ" target="_blank" rel="noopener noreferrer" class="font-aldrich text-sm text-pf-accent hover:text-pf-text">github.com/MikelGV/PierceMQ</a>
+					</div>
+					<ul class="list-disc space-y-1 pl-5 font-aldrich text-sm leading-relaxed text-pf-text/80">
+						<li>Built a scalable distributed task queue with Redis Streams (consumer groups) and PostgreSQL, featuring delayed scheduling, automatic retries, job status tracking, and horizontal worker scaling to handle 5k–10k jobs/sec.</li>
+					</ul>
+				</div>
+			</div>
+			<div class="space-y-3">
+				<h2 class="font-aldrich text-xl font-semibold text-pf-text">Education</h2>
+			<ul class="list-disc space-y-1 pl-5 font-aldrich text-sm leading-relaxed text-pf-text/80">
+				<li>Self-taught software developer.</li>
+				<li>Independent study through online software-development courses covering MVC, REST APIs, GraphQL, Django, Python, and Deno.</li>
+			</ul>
+		</div>
+		<div class="pt-2 text-center">
+			<a href="/static/resume/Mikel_Galdos_Resume_10_01_2025.pdf" download class="inline-flex items-center justify-center gap-2 border-2 border-pf-text/20 px-6 py-3 font-aldrich text-pf-text/80 transition-colors hover:border-pf-accent hover:text-pf-accent">
+				<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+				Download PDF
+			</a>
+		</div>
+	</section>
 	}
 }

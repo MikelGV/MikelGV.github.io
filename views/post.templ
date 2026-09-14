@@ -1,0 +1,52 @@
+package views
+
+import (
+	"github.com/MikelGV/Personal-Website/internal/components/layout"
+	"github.com/MikelGV/Personal-Website/internal/data"
+)
+
+templ Post(b data.Blog) {
+	@layout.Base(b.Title+" — MikelGV", "blog") {
+		<article class="mx-auto max-w-3xl">
+			<p class="text-right font-aldrich text-sm text-pf-text/60">{ b.Type } · { b.Date }</p>
+			<h1 class="mt-4 text-left text-3xl font-bold font-aldrich tracking-tight">{ b.Title }</h1>
+			<div class="prose-blog mt-6 font-aldrich text-base leading-relaxed text-pf-text/80">
+				@data.RenderMarkdown(b.Intro)
+			</div>
+		</article>
+		<div class="relative mt-8 flex aspect-[21/9] max-h-[32rem] w-full items-center justify-center overflow-hidden border border-gray-200/80 bg-pf-text/5">
+			if b.Image1 != "" {
+				<img
+					src={ b.Image1 }
+					alt={ b.Title }
+					loading="lazy"
+					onerror="this.style.display='none'"
+					class="absolute inset-0 h-full w-full object-cover"
+				/>
+			}
+		</div>
+		<article class="mx-auto max-w-3xl">
+			<div class="prose-blog mt-8 font-aldrich text-base leading-relaxed text-pf-text/80">
+				@data.RenderMarkdown(b.Lead)
+			</div>
+			<div class="relative mt-8 aspect-[4/3] w-full overflow-hidden border border-gray-200/80 bg-pf-text/5 sm:float-right sm:ml-6 sm:mb-4 sm:mt-2 sm:max-w-xs">
+				if b.Image2 != "" {
+					<img
+						src={ b.Image2 }
+						alt={ b.Title }
+						loading="lazy"
+						onerror="this.style.display='none'"
+						class="h-full w-full object-cover"
+					/>
+				}
+			</div>
+			<div class="prose-blog mt-8 font-aldrich text-base leading-relaxed text-pf-text/80">
+				@data.RenderMarkdown(b.Body)
+			</div>
+			<a href="/blog" class="mt-8 inline-block clear-both font-aldrich text-sm text-pf-accent hover:text-pf-text">← All blogs</a>
+			<div class="prose-blog mt-8 border-t border-gray-200/80 pt-8 font-aldrich text-base leading-relaxed text-pf-text/80">
+				@data.RenderMarkdown(b.Outro)
+			</div>
+		</article>
+	}
+}

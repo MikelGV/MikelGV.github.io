@@ -24,9 +24,13 @@ func AddRoutes(
 
 	mux.Handle("/blog", handlers.BlogHandler())
 
+	mux.Handle("GET /blog/more", handlers.BlogMoreHandler())
+
 	mux.Handle("/blog/{id}", handlers.PostHandler())
 
 	mux.Handle("/contact", handlers.ContactHandler())
 
-	mux.Handle("/resume", handlers.ResumeHandler())
+	mux.Handle("/cv", handlers.ResumeHandler())
+
+	mux.Handle("/resume", http.RedirectHandler("/cv", http.StatusMovedPermanently))
 }
