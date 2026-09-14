@@ -1,14 +1,47 @@
 package views
 
-import "github.com/MikelGV/Personal-Website/internal/components/layout"
+import (
+	"strconv"
 
-templ Blog() {
+	"github.com/MikelGV/Personal-Website/internal/components/layout"
+	"github.com/MikelGV/Personal-Website/internal/components/ui"
+	"github.com/MikelGV/Personal-Website/internal/data"
+)
+
+templ Blog(blogs []data.Blog, hasMore bool, nextPage int) {
 	@layout.Base("Blog — MikelGV", "blog") {
-		<section class="space-y-6">
-			<h1 class="text-3xl font-bold tracking-tight">Blog</h1>
-			<p class="text-lg leading-relaxed text-stone-600">
-				Thoughts and notes on software engineering and technology.
-			</p>
+		<section>
+			<div class="flex flex-wrap items-baseline gap-3">
+				<h1 class="text-xl font-bold font-aldrich tracking-tight">All Blogs</h1>
+				<p class="font-aldrich text-lg text-pf-text/60">- deep-dives, tutorials and notes</p>
+			</div>
 		</section>
+		if len(blogs) == 0 {
+			@ComingSoon()
+		} else {
+			<div id="blog-grid" class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+				@ui.BlogGrid(blogs)
+			</div>
+			<div class="mt-8 flex justify-center">
+				<div id="load-more-wrap">
+					if hasMore {
+						<button
+							hx-get={ "/blog/more?page=" + strconv.Itoa(nextPage) }
+							hx-target="#blog-grid"
+							hx-swap="beforeend"
+							class="rounded border border-gray-200/80 px-4 py-1.5 font-aldrich text-sm text-pf-text/80 transition-colors hover:text-pf-accent"
+						>Load more</button>
+					}
+				</div>
+			</div>
+		}
 	}
+}
+
+templ ComingSoon() {
+	<div class="mt-8 rounded border border-gray-200/80 bg-pf-text/5 px-4 py-8 text-center">
+		<p class="font-aldrich text-lg text-pf-text/80">First posts are on the way.</p>
+		<p class="mt-2 font-aldrich text-sm leading-relaxed text-pf-text/60">Writing is in progress — check back soon.</p>
+		<a href="/" class="mt-4 inline-block font-aldrich text-sm text-pf-accent hover:text-pf-text">← Back home</a>
+	</div>
 }

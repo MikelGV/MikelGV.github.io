@@ -1,0 +1,43 @@
+package ui
+
+import (
+	"strconv"
+
+	"github.com/MikelGV/Personal-Website/internal/data"
+)
+
+templ BlogCard(b data.Blog) {
+	<a
+		href={ "/blog/" + b.ID }
+		class="flex aspect-square flex-col border border-gray-200/80 bg-pf-text/5 p-4 transition-colors hover:bg-pf-text/10"
+	>
+		<p class="font-aldrich text-xs text-pf-text/60">{ b.Type }</p>
+		<div class="flex flex-1 flex-col items-center justify-center text-center">
+			<p class="font-aldrich text-base font-semibold text-pf-text line-clamp-3">{ b.Title }</p>
+			<p class="mt-2 font-aldrich text-sm leading-relaxed text-pf-text/60 line-clamp-3">{ b.Description }</p>
+		</div>
+		<p class="font-aldrich text-xs text-pf-text/40">{ b.Date }</p>
+	</a>
+}
+
+templ BlogGrid(blogs []data.Blog) {
+	for _, b := range blogs {
+		@BlogCard(b)
+	}
+}
+
+templ BlogMoreChunk(blogs []data.Blog, hasMore bool, nextPage int) {
+	for _, b := range blogs {
+		@BlogCard(b)
+	}
+	<div id="load-more-wrap" hx-swap-oob="outerHTML">
+		if hasMore {
+			<button
+				hx-get={ "/blog/more?page=" + strconv.Itoa(nextPage) }
+				hx-target="#blog-grid"
+				hx-swap="beforeend"
+				class="rounded border border-gray-200/80 px-4 py-1.5 font-aldrich text-sm text-pf-text/80 transition-colors hover:text-pf-accent"
+			>Load more</button>
+		}
+	</div>
+}

@@ -2,11 +2,14 @@ package handlers
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/MikelGV/Personal-Website/internal/components/ui"
 	"github.com/MikelGV/Personal-Website/internal/data"
 	"github.com/MikelGV/Personal-Website/views"
 )
+
+const blogPageSize = 8
 
 func HomeHandler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -49,7 +52,42 @@ func BlogHandler() http.Handler {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 			return
 		}
-		views.Blog().Render(r.Context(), w)
+		blogs, err := data.PublishedBlogs()
+		if err != nil {
+			http.Error(w, "Failed to load blogs", http.StatusInternalServerError)
+			return
+		}
+		end := min(len(blogs), blogPageSize)
+		views.Blog(blogs[:end], len(blogs) > end, 2).Render(r.Context(), w)
+	})
+}
+
+func BlogMoreHandler() http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodGet {
+			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+			return
+		}
+		blogs, err := data.PublishedBlogs()
+		if err != nil {
+			http.Error(w, "Failed to load blogs", http.StatusInternalServerError)
+			return
+		}
+		page := 2
+		if q := r.URL.Query().Get("page"); q != "" {
+			if p, err := strconv.Atoi(q); err == nil && p >= 2 {
+				page = p
+			}
+		}
+		start := (page - 1) * blogPageSize
+		if start >= len(blogs) {
+			w.Header().Set("Content-Type", "text/html; charset=utf-8")
+			ui.BlogMoreChunk(nil, false, page+1).Render(r.Context(), w)
+			return
+		}
+		end := min(start+blogPageSize, len(blogs))
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		ui.BlogMoreChunk(blogs[start:end], len(blogs) > end, page+1).Render(r.Context(), w)
 	})
 }
 
@@ -57,7 +95,19 @@ func PostHandler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodGet {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+			return
 		}
+		blogs, err := data.PublishedBlogs()
+		if err != nil {
+			http.Error(w, "Failed to load blogs", http.StatusInternalServerError)
+			return
+		}
+		b := data.FindBlog(blogs, r.PathValue("id"))
+		if b == nil {
+			http.Error(w, "Blog post not found", http.StatusNotFound)
+			return
+		}
+		views.Post(*b).Render(r.Context(), w)
 	})
 }
 
