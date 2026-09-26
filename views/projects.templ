@@ -23,7 +23,7 @@ templ Projects(projects []data.Project) {
 			</div>
 		</section>
 		<div class="border-t border-gray-200/80" style="width: 100vw; margin-left: calc(50% - 50vw);">
-			<div class="mx-auto max-w-6xl px-2 pt-4 pb-8">
+			<div class="mx-auto max-w-6xl px-4 pt-4 pb-8">
 				<div class="flex flex-col gap-8 lg:flex-row">
 					<div class="flex-1 lg:sticky lg:top-4 lg:self-start">
 						<p class="text-lg font-semibold font-aldrich text-pf-text/80 font-aldrich">Preview</p>
@@ -33,22 +33,23 @@ templ Projects(projects []data.Project) {
 							}
 						</div>
 					</div>
-					<div class="flex-1">
-						<div class="grid grid-cols-[2.5rem_1fr_1fr_1fr_2rem] items-center gap-2">
+					<div class="flex-1 min-w-0">
+						<!-- Table header: desktop only -->
+						<div class="hidden grid-cols-[2.5rem_1fr_1fr_1fr_2rem] items-center gap-2 lg:grid">
 							<p class="text-lg font-semibold text-pf-text/80 font-aldrich">#Id</p>
 							<p class="text-lg font-semibold text-pf-text/80 font-aldrich">Project Title</p>
 							<p class="text-lg font-semibold text-pf-text/80 font-aldrich">Blogs about it</p>
 							<p class="text-lg font-semibold text-pf-text/80 font-aldrich">Field</p>
 							<span></span>
 						</div>
-						<div class="mt-2 max-h-[34rem] overflow-x-auto overflow-y-auto">
+						<div class="mt-2 lg:max-h-[34rem] lg:overflow-y-auto">
 							for i, p := range projects {
 								<div
 									hx-get={ "/projects/preview/" + p.ID }
 									hx-target="#project-preview"
 									hx-swap="innerHTML"
 									hx-on:click="document.querySelectorAll('.proj-row').forEach(e=>e.classList.remove('bg-pf-text/5')); this.classList.add('bg-pf-text/5')"
-									class={ "proj-row grid cursor-pointer grid-cols-[2.5rem_1fr_1fr_1fr_2rem] items-center gap-2 rounded border-b border-gray-200/80 px-2 py-3 transition-colors hover:bg-pf-text/5", templ.KV("bg-pf-text/5", i == 0) }
+									class={ "proj-row grid cursor-pointer grid-cols-[2rem_1fr_2rem] items-start gap-2 rounded border-b border-gray-200/80 px-2 py-4 transition-colors hover:bg-pf-text/5 lg:grid-cols-[2.5rem_1fr_1fr_1fr_2rem] lg:items-center lg:py-3", templ.KV("bg-pf-text/5", i == 0) }
 								>
 									<p class="text-sm font-aldrich text-pf-text/60">[{ p.ID }]</p>
 									<div class="min-w-0">
@@ -65,8 +66,35 @@ templ Projects(projects []data.Project) {
 												}
 											</div>
 										}
+										<!-- Mobile-only meta: field + blogs stacked under title -->
+										<div class="mt-2 space-y-1 lg:hidden">
+											<p class="text-sm font-aldrich text-pf-text/80">{ p.Field }</p>
+											if len(p.Blogs) > 0 {
+												for _, b := range p.Blogs {
+													<a
+														href={ "/blog/" + b.ID }
+														onclick="event.stopPropagation()"
+														class="block py-1 text-sm font-aldrich text-pf-accent hover:text-pf-text"
+													>{ b.Title }</a>
+												}
+											}
+										</div>
 									</div>
-									<div class="space-y-1">
+									<a
+										href={ p.GitHub }
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label={ p.Name + " on GitHub" }
+										onclick="event.stopPropagation()"
+										class="inline-flex h-11 w-11 items-center justify-center text-pf-text/60 transition-colors hover:text-pf-accent lg:order-5 lg:h-auto lg:w-auto"
+									>
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+											<line x1="7" y1="17" x2="17" y2="7"></line>
+											<polyline points="7 7 17 7 17 17"></polyline>
+										</svg>
+									</a>
+									<!-- Desktop-only columns -->
+									<div class="hidden space-y-1 lg:order-3 lg:block">
 										if len(p.Blogs) > 0 {
 											for _, b := range p.Blogs {
 												<a
@@ -79,20 +107,8 @@ templ Projects(projects []data.Project) {
 											<p class="text-sm font-aldrich text-pf-text/40">—</p>
 										}
 									</div>
-									<p class="text-sm font-aldrich text-pf-text/80">{ p.Field }</p>
-									<a
-										href={ p.GitHub }
-										target="_blank"
-										rel="noopener noreferrer"
-										aria-label={ p.Name + " on GitHub" }
-										onclick="event.stopPropagation()"
-										class="text-pf-text/60 transition-colors hover:text-pf-accent"
-									>
-										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
-											<line x1="7" y1="17" x2="17" y2="7"></line>
-											<polyline points="7 7 17 7 17 17"></polyline>
-										</svg>
-									</a>
+									<p class="hidden text-sm font-aldrich text-pf-text/80 lg:order-4 lg:block">{ p.Field }</p>
+									<span class="hidden lg:order-6 lg:block"></span>
 								</div>
 							}
 						</div>
