@@ -8,4 +8,9 @@ tmp/
 static/css/output.css
 static/resume/Mikel_Galdos_Resume_10_01_2025.md
 
+# Vercel build output and local metadata
+/public/
+/server
+/.vercel/
+
 AGENTS.md
