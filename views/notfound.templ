@@ -1,0 +1,15 @@
+package views
+
+import "github.com/MikelGV/Personal-Website/internal/components/layout"
+
+templ NotFound() {
+	@layout.Base("404 — MikelGV", "") {
+		<section class="mx-auto max-w-xl py-16 text-center">
+			<h1 class="font-aldrich text-3xl font-bold tracking-tight text-pf-text">404</h1>
+			<p class="mt-4 font-aldrich text-base leading-relaxed text-pf-text/70">
+				That page doesn't exist. It may have moved, or the link may be wrong.
+			</p>
+			<a href="/" class="mt-6 inline-block font-aldrich text-sm text-pf-accent hover:text-pf-text">← Back home</a>
+		</section>
+	}
+}

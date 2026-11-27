@@ -4,65 +4,147 @@ package layout
  * This is the topbar component
  **/
 templ TopBar(active string) {
-    <header class="bg-pf-black">
-        <nav class="mx-auto flex max-w-6xl items-center justify-between px-2 py-4">
-            <a href="/" class="text-xl font-bold tracking-tight text-pf-text font-aldrich">MikelGV</a>
-            <ul class="flex gap-6 text-sm">
-                <li>
-                    <a href="/"
-                        if active == "home" {
-                            class="font-semibold text-pf-text font-aldrich"
-                        } else {
-                            class="text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
-                        }
-                    >Home</a>
-                </li>
-                <li>
-                    <a href="/about"
-                        if active == "about" {
-                            class="font-semibold text-pf-text font-aldrich"
-                        } else {
-                            class="text-pf-text/60 transition-colors font-aldrich hover:text-pf-text"
-                        }
-                    >About</a>
-                </li>
-                <li>
-                    <a href="/projects"
-                        if active == "projects" {
-                            class="font-semibold text-pf-text font-aldrich"
-                        } else {
-                            class="text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
-                        }
-                    >Projects</a>
-                </li>
-                <li>
-                    <a href="/blog"
-                        if active == "blog" {
-                            class="font-semibold text-pf-text font-aldrich"
-                        } else {
-                            class="text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
-                        }
-                    >Blog</a>
-                </li>
-                <li>
-                    <a href="/contact"
-                        if active == "contact" {
-                            class="font-semibold text-pf-text font-aldrich"
-                        } else {
-                            class="text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
-                        }
-                    >Contact</a>
-                </li>
-                <li>
-                    <a href="/cv"
-                        if active == "cv" {
-                            class="font-semibold text-pf-text font-aldrich"
-                        } else {
-                            class="text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
-                        }
-                    >CV</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+	<header class="bg-pf-black">
+		<nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+			<a href="/" class="text-xl font-bold tracking-tight text-pf-text font-aldrich">MikelGV</a>
+			<!-- Desktop nav -->
+			<ul class="hidden gap-6 text-sm md:flex">
+				<li>
+					<a
+						href="/"
+						if active == "home" {
+							class="font-semibold text-pf-text font-aldrich"
+						} else {
+							class="text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
+						}
+					>Home</a>
+				</li>
+				<li>
+					<a
+						href="/about"
+						if active == "about" {
+							class="font-semibold text-pf-text font-aldrich"
+						} else {
+							class="text-pf-text/60 transition-colors font-aldrich hover:text-pf-text"
+						}
+					>About</a>
+				</li>
+				<li>
+					<a
+						href="/projects"
+						if active == "projects" {
+							class="font-semibold text-pf-text font-aldrich"
+						} else {
+							class="text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
+						}
+					>Projects</a>
+				</li>
+				<li>
+					<a
+						href="/blog"
+						if active == "blog" {
+							class="font-semibold text-pf-text font-aldrich"
+						} else {
+							class="text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
+						}
+					>Blog</a>
+				</li>
+				<li>
+					<a
+						href="/contact"
+						if active == "contact" {
+							class="font-semibold text-pf-text font-aldrich"
+						} else {
+							class="text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
+						}
+					>Contact</a>
+				</li>
+				<li>
+					<a
+						href="/cv"
+						if active == "cv" {
+							class="font-semibold text-pf-text font-aldrich"
+						} else {
+							class="text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
+						}
+					>CV</a>
+				</li>
+			</ul>
+			<!-- Mobile hamburger -->
+			<button
+				type="button"
+				class="inline-flex h-11 w-11 items-center justify-center rounded text-pf-text/80 hover:text-pf-text md:hidden"
+				aria-label="Toggle menu"
+				aria-expanded="false"
+				onclick="const m=document.getElementById('mobile-menu');m.classList.toggle('hidden');this.setAttribute('aria-expanded',m.classList.contains('hidden')?'false':'true')"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+			</button>
+		</nav>
+		<!-- Mobile nav -->
+		<div id="mobile-menu" class="hidden border-t border-pf-text/10 md:hidden">
+			<ul class="mx-auto max-w-6xl space-y-1 px-4 py-3 text-base">
+				<li>
+					<a
+						href="/"
+						if active == "home" {
+							class="block py-3 font-semibold text-pf-text font-aldrich"
+						} else {
+							class="block py-3 text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
+						}
+					>Home</a>
+				</li>
+				<li>
+					<a
+						href="/about"
+						if active == "about" {
+							class="block py-3 font-semibold text-pf-text font-aldrich"
+						} else {
+							class="block py-3 text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
+						}
+					>About</a>
+				</li>
+				<li>
+					<a
+						href="/projects"
+						if active == "projects" {
+							class="block py-3 font-semibold text-pf-text font-aldrich"
+						} else {
+							class="block py-3 text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
+						}
+					>Projects</a>
+				</li>
+				<li>
+					<a
+						href="/blog"
+						if active == "blog" {
+							class="block py-3 font-semibold text-pf-text font-aldrich"
+						} else {
+							class="block py-3 text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
+						}
+					>Blog</a>
+				</li>
+				<li>
+					<a
+						href="/contact"
+						if active == "contact" {
+							class="block py-3 font-semibold text-pf-text font-aldrich"
+						} else {
+							class="block py-3 text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
+						}
+					>Contact</a>
+				</li>
+				<li>
+					<a
+						href="/cv"
+						if active == "cv" {
+							class="block py-3 font-semibold text-pf-text font-aldrich"
+						} else {
+							class="block py-3 text-pf-text/60 transition-colors hover:text-pf-text font-aldrich"
+						}
+					>CV</a>
+				</li>
+			</ul>
+		</div>
+	</header>
 }

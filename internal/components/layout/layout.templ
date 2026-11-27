@@ -15,7 +15,7 @@ templ Base(title string, active string, children ...templ.Component) {
 		</head>
 		<body class="min-h-screen flex flex-col bg-pf-bg text-pf-text antialiased overflow-x-hidden">
             @TopBar(active)
-			<main class="mx-auto w-full max-w-6xl flex-1 px-2 py-12">
+			<main class="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:py-12">
 				{ children... }
 			</main>
             @Footer()

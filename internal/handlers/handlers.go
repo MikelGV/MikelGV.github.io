@@ -9,12 +9,17 @@ import (
 	"github.com/MikelGV/Personal-Website/views"
 )
 
-const blogPageSize = 8
+const BlogPageSize = 8
 
 func HomeHandler() http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodGet {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+			return
+		}
+		if r.URL.Path != "/" {
+			w.WriteHeader(http.StatusNotFound)
+			views.NotFound().Render(r.Context(), w)
 			return
 		}
 		projects, err := data.LoadProjects()
@@ -57,7 +62,7 @@ func BlogHandler() http.Handler {
 			http.Error(w, "Failed to load blogs", http.StatusInternalServerError)
 			return
 		}
-		end := min(len(blogs), blogPageSize)
+		end := min(len(blogs), BlogPageSize)
 		views.Blog(blogs[:end], len(blogs) > end, 2).Render(r.Context(), w)
 	})
 }
@@ -74,18 +79,16 @@ func BlogMoreHandler() http.Handler {
 			return
 		}
 		page := 2
-		if q := r.URL.Query().Get("page"); q != "" {
-			if p, err := strconv.Atoi(q); err == nil && p >= 2 {
-				page = p
-			}
+		if p, err := strconv.Atoi(r.PathValue("page")); err == nil && p >= 2 {
+			page = p
 		}
-		start := (page - 1) * blogPageSize
+		start := (page - 1) * BlogPageSize
 		if start >= len(blogs) {
 			w.Header().Set("Content-Type", "text/html; charset=utf-8")
 			ui.BlogMoreChunk(nil, false, page+1).Render(r.Context(), w)
 			return
 		}
-		end := min(start+blogPageSize, len(blogs))
+		end := min(start+BlogPageSize, len(blogs))
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		ui.BlogMoreChunk(blogs[start:end], len(blogs) > end, page+1).Render(r.Context(), w)
 	})
