@@ -24,7 +24,7 @@ func AddRoutes(
 
 	mux.Handle("/blog", handlers.BlogHandler())
 
-	mux.Handle("GET /blog/more", handlers.BlogMoreHandler())
+	mux.Handle("GET /blog/more/{page}", handlers.BlogMoreHandler())
 
 	mux.Handle("/blog/{id}", handlers.PostHandler())
 

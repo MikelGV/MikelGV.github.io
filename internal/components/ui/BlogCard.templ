@@ -33,7 +33,7 @@ templ BlogMoreChunk(blogs []data.Blog, hasMore bool, nextPage int) {
 	<div id="load-more-wrap" hx-swap-oob="outerHTML">
 		if hasMore {
 			<button
-				hx-get={ "/blog/more?page=" + strconv.Itoa(nextPage) }
+				hx-get={ "/blog/more/" + strconv.Itoa(nextPage) }
 				hx-target="#blog-grid"
 				hx-swap="beforeend"
 				class="rounded border border-gray-200/80 px-4 py-1.5 font-aldrich text-sm text-pf-text/80 transition-colors hover:text-pf-accent"

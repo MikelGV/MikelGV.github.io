@@ -13,4 +13,7 @@ static/resume/Mikel_Galdos_Resume_10_01_2025.md
 /server
 /.vercel/
 
+# GitHub Pages static build output
+/dist/
+
 AGENTS.md
